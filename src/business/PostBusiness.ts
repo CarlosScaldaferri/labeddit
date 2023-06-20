@@ -1,18 +1,19 @@
-import { PostDatabase } from "../database/PostDataBase";
+import { log } from "console";
+import { PostDataBase } from "../database/PostDataBase";
 import { CreatePostInputDTO } from "../dtos/posts/CreatPostDTO";
 import { DeletePostInputDTO } from "../dtos/posts/DeletePostDTO";
 import { EditPostInputDTO } from "../dtos/posts/EditPostDTO";
 import { GetPostInputDTO, GetPostOutputDTO } from "../dtos/posts/GetPostDTO";
 import { LikePostInputDTO } from "../dtos/posts/LikePostDTO";
 import { BadRequestError } from "../errors/BadRequestError";
-import { Post, PostDB, PostModel } from "../models/Posts";
+import { Post, PostDB } from "../models/Posts";
 import { USER_ROLES, UserDB } from "../models/User";
 import { IdGenerator } from "../services/IdGenerator";
 import { TokenManager } from "../services/TokenManager";
 
 export class PostBusiness {
   constructor(
-    private postDatabase: PostDatabase,
+    private PostDataBase: PostDataBase,
     private idGenerator: IdGenerator,
     private tokenManager: TokenManager
   ) {}
@@ -28,7 +29,7 @@ export class PostBusiness {
       throw new BadRequestError("Token inválido");
     }
 
-    const [postsDB, usersDB] = await this.postDatabase.getPosts();
+    const [postsDB, usersDB] = await this.PostDataBase.getPosts();
 
     const posts = postsDB.map((postDB) => {
       return new Post(
@@ -76,12 +77,12 @@ export class PostBusiness {
 
     const newPost = new Post(
       id,
+      payload.id,
       content,
       0,
       0,
       new Date().toISOString(),
-      new Date().toISOString(),
-      payload.id
+      new Date().toISOString()
     );
 
     const newPostDB: PostDB = {
@@ -94,7 +95,9 @@ export class PostBusiness {
       updated_at: newPost.getUpdatedAt(),
     };
 
-    this.postDatabase.createPost(newPostDB);
+    this.PostDataBase.createPost(newPostDB);
+
+    return "Post criado com sucesso";
   };
 
   public editPost = async (input: EditPostInputDTO) => {
@@ -106,7 +109,7 @@ export class PostBusiness {
       throw new BadRequestError("Token inválido");
     }
 
-    const [posts] = await this.postDatabase.getPosts();
+    const [posts] = await this.PostDataBase.getPosts();
 
     console.log(content);
 
@@ -120,7 +123,7 @@ export class PostBusiness {
       );
     }
 
-    await this.postDatabase.editPost(id, content);
+    await this.PostDataBase.editPost(id, content);
   };
 
   public deletePost = async (input: DeletePostInputDTO) => {
@@ -132,7 +135,7 @@ export class PostBusiness {
       throw new BadRequestError("Token inválido");
     }
 
-    const [posts] = await this.postDatabase.getPosts();
+    const [posts] = await this.PostDataBase.getPosts();
 
     let postDB = [];
 
@@ -155,7 +158,7 @@ export class PostBusiness {
       );
     }
 
-    await this.postDatabase.deletePost(id);
+    await this.PostDataBase.deletePost(id);
   };
 
   public likePost = async (input: LikePostInputDTO) => {
@@ -167,7 +170,7 @@ export class PostBusiness {
       throw new BadRequestError("Token inválido");
     }
 
-    const [posts] = await this.postDatabase.getPosts();
+    const [posts] = await this.PostDataBase.getPosts();
 
     const postDB = posts.find((post) => {
       return post.id === id;
@@ -188,9 +191,7 @@ export class PostBusiness {
       throw new BadRequestError("Não existem posts com esse id");
     }
 
-    const isLiked = await this.postDatabase.verifyLike(id, payload.id);
-
-    console.log(isLiked);
+    const isLiked = await this.PostDataBase.verifyLike(id, payload.id);
 
     let likesNumber = postDB.likes;
     let dislikesNumber = postDB.dislikes;
@@ -208,9 +209,7 @@ export class PostBusiness {
         dislikesNumber = 0;
       }
 
-      // const alreadyLiked = 1
-
-      await this.postDatabase.likePost(
+      await this.PostDataBase.likePost(
         likesNumber,
         dislikesNumber,
         id,
@@ -230,7 +229,7 @@ export class PostBusiness {
         dislikesNumber = postDB.dislikes + 1;
       }
 
-      await this.postDatabase.dislikePost(
+      await this.PostDataBase.dislikePost(
         likesNumber,
         dislikesNumber,
         id,

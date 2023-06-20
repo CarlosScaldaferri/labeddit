@@ -10,7 +10,6 @@ export interface GetPostOutputDTO {
 
 export interface GetPostOutputDTO {
   id: string;
-  // creatorId: string,
   content: string;
   likes: number;
   dislikes: number;
