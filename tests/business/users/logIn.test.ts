@@ -15,12 +15,12 @@ describe("Testando log in", () => {
 
   test("Deve retornar token ao fazer log in", async () => {
     const input = LogInSchema.parse({
-      email: "fulano@email.com",
-      password: "fulano123",
+      email: "teste@email.com",
+      password: "teste123",
     });
 
     const output = await userBusiness.logIn(input);
 
-    expect(output).toEqual("token-mock-fulano");
+    expect(output).toEqual("token-mock-teste");
   });
 });

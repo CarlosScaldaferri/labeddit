@@ -13,10 +13,10 @@ describe("Testando createComment", () => {
     new TokenManagerMock()
   );
 
-  test("Deve criar comentários corretamente", async () => {
+  test("Criar comentários corretamente", async () => {
     await commentBusiness.createComment({
-      token: "token-mock-fulano",
-      postId: "id-mock-post-fulano",
+      token: "token-mock-teste",
+      postId: "id-mock-post-teste",
       content: "Novo comentário",
     });
 

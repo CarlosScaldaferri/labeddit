@@ -12,13 +12,13 @@ describe("Testando getPosts", () => {
 
   test("Deve retornar posts corretamente", async () => {
     const postsMockModel = await postBusiness.getPosts({
-      token: "token-mock-fulano",
+      token: "token-mock-teste",
     });
 
     expect(postsMockModel).toEqual([
       {
-        id: "id-mock-post-fulano",
-        creatorId: "id-mock-fulano",
+        id: "id-mock-post-teste",
+        creatorId: "id-mock-teste",
         content: "Bananinha",
         likes: 23,
         dislikes: 12,
@@ -26,8 +26,8 @@ describe("Testando getPosts", () => {
         updatedAt: expect.any(String),
       },
       {
-        id: "id-mock-post-astrodev",
-        creatorId: "id-mock-astrodev",
+        id: "id-mock-post-teste2",
+        creatorId: "id-mock-teste2",
         content: "Pepino",
         likes: 54,
         dislikes: 3,

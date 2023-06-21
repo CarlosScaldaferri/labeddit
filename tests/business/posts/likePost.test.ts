@@ -12,8 +12,8 @@ describe("Testando like e dislike no post", () => {
 
   test("Deve dar like no post corretamente", async () => {
     await postBusiness.likePost({
-      id: "id-mock-post-astrodev",
-      token: "token-mock-fulano",
+      id: "id-mock-post-teste2",
+      token: "token-mock-teste",
       like: true,
     });
 

@@ -5,8 +5,8 @@ import { usersMock } from "./UserDataBaseMock";
 export let commentsMock: CommentDB[] = [
   {
     id: "id-mock-comment-1",
-    post_id: "id-mock-post-fulano",
-    user_id: "id-mock-fulano",
+    post_id: "id-mock-post-teste",
+    user_id: "id-mock-teste",
     content: "Conteúdo teste",
     likes: 10,
     dislikes: 2,
@@ -15,8 +15,8 @@ export let commentsMock: CommentDB[] = [
   },
   {
     id: "id-mock-comment-2",
-    post_id: "id-mock-post-astrodev",
-    user_id: "id-mock-astrodev",
+    post_id: "id-mock-post-teste2",
+    user_id: "id-mock-teste2",
     content: "Conteúdo teste 2",
     likes: 20,
     dislikes: 1,

@@ -13,7 +13,7 @@ describe("Testando createPosts", () => {
   test("Deve criar post corretamente", async () => {
     const output = await postBusiness.createPost({
       content: "Novo Post",
-      token: "token-mock-fulano",
+      token: "token-mock-teste",
     });
 
     expect(output).toEqual("Post criado com sucesso");

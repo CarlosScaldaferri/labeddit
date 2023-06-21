@@ -12,19 +12,19 @@ describe("Testando editPosts", () => {
 
   test("Deve editar post corretamente", async () => {
     await postBusiness.editPost({
-      id: "id-mock-post-fulano",
-      token: "token-mock-fulano",
+      id: "id-mock-post-teste",
+      token: "token-mock-teste",
       content: "Post editado",
     });
 
     const updatedPosts = await postBusiness.getPosts({
-      token: "token-mock-fulano",
+      token: "token-mock-teste",
     });
 
     expect(updatedPosts).toEqual([
       {
-        id: "id-mock-post-fulano",
-        creatorId: "id-mock-fulano",
+        id: "id-mock-post-teste",
+        creatorId: "id-mock-teste",
         content: "Post editado",
         likes: 23,
         dislikes: 12,
@@ -32,8 +32,8 @@ describe("Testando editPosts", () => {
         updatedAt: expect.any(String),
       },
       {
-        id: "id-mock-post-astrodev",
-        creatorId: "id-mock-astrodev",
+        id: "id-mock-post-teste2",
+        creatorId: "id-mock-teste2",
         content: "Pepino",
         likes: 54,
         dislikes: 3,

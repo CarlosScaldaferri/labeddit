@@ -18,16 +18,16 @@ describe("Testando getUsers", () => {
 
     expect(output).toEqual([
       {
-        id: "id-mock-fulano",
-        name: "Fulano",
-        email: "fulano@email.com",
+        id: "id-mock-teste",
+        name: "teste",
+        email: "teste@email.com",
         createdAt: expect.any(String),
         role: USER_ROLES.NORMAL,
       },
       {
-        id: "id-mock-astrodev",
-        name: "Astrodev",
-        email: "astrodev@email.com",
+        id: "id-mock-teste2",
+        name: "teste2",
+        email: "teste2@email.com",
         createdAt: expect.any(String),
         role: USER_ROLES.ADMIN,
       },

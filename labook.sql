@@ -1,4 +1,4 @@
--- Active: 1683309470688@@127.0.0.1@3306
+-- Active: 1687276427674@@127.0.0.1@3306
 CREATE TABLE
     users (
         id TEXT PRIMARY KEY UNIQUE NOT NULL,
@@ -51,3 +51,5 @@ CREATE TABLE
         FOREIGN KEY (user_id) REFERENCES users (id) ON UPDATE CASCADE ON DELETE CASCADE,
         FOREIGN KEY (comment_id) REFERENCES comments (id) ON UPDATE CASCADE ON DELETE CASCADE
     );
+
+select * from posts

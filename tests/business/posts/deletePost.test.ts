@@ -12,8 +12,8 @@ describe("Testando deletePost", () => {
 
   test("Deve deletar post corretamente", async () => {
     await postBusiness.deletePost({
-      id: "id-mock-post-fulano",
-      token: "token-mock-fulano",
+      id: "id-mock-post-teste",
+      token: "token-mock-teste",
     });
 
     expect(postsMock).toHaveLength(1);

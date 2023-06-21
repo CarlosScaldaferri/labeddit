@@ -16,8 +16,8 @@ describe("Testando likeComment", () => {
   test("Deve dar like no comentário corretamente", async () => {
     await commentBusiness.likeComment({
       id: "id-mock-comment-1",
-      token: "token-mock-astrodev",
-      postId: "id-mock-post-fulano",
+      token: "token-mock-teste2",
+      postId: "id-mock-post-teste",
       like: true,
     });
 
@@ -27,8 +27,8 @@ describe("Testando likeComment", () => {
   test("Deve dar dislike no comentário corretamente", async () => {
     await commentBusiness.likeComment({
       id: "id-mock-comment-1",
-      token: "token-mock-astrodev",
-      postId: "id-mock-post-fulano",
+      token: "token-mock-teste2",
+      postId: "id-mock-post-teste",
       like: false,
     });
 

@@ -12,18 +12,18 @@ describe("Testando getComments", () => {
 
   test("Deve retornar comentários do post corretamente", async () => {
     const comments = await commentBusiness.getCommentsByPostId({
-      token: "token-mock-fulano",
-      postId: "id-mock-post-fulano",
+      token: "token-mock-teste",
+      postId: "id-mock-post-teste",
     });
 
     expect(comments).toEqual([
       {
         id: "id-mock-comment-1",
-        post_id: "id-mock-post-fulano",
-        user_id: "id-mock-fulano",
+        post_id: "id-mock-post-teste",
+        user_id: "id-mock-teste",
         content: "Conteúdo teste",
         likes: 10,
-        name: "Fulano",
+        name: "teste",
         dislikes: 2,
         created_at: expect.any(String),
         updated_at: expect.any(String),

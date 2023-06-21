@@ -47,14 +47,6 @@ export class UserController {
 
   public logIn = async (req: Request, res: Response) => {
     try {
-      //ToDO
-      // const input = LogInSchema.parse({
-      //   email: req.body.email,
-      //   password: req.body.password,
-      // });
-
-      //const token = await this.userBusiness.logIn(input);
-
       const token = await this.userBusiness.logIn({
         email: req.body.email,
         password: req.body.password,

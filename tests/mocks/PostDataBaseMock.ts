@@ -5,8 +5,8 @@ import { PostDataBase } from "../../src/database/PostDataBase";
 
 export let postsMock: PostDB[] = [
   {
-    id: "id-mock-post-fulano",
-    creator_id: "id-mock-fulano",
+    id: "id-mock-post-teste",
+    creator_id: "id-mock-teste",
     content: "Bananinha",
     likes: 23,
     dislikes: 12,
@@ -14,8 +14,8 @@ export let postsMock: PostDB[] = [
     updated_at: new Date().toISOString(),
   },
   {
-    id: "id-mock-post-astrodev",
-    creator_id: "id-mock-astrodev",
+    id: "id-mock-post-teste2",
+    creator_id: "id-mock-teste2",
     content: "Pepino",
     likes: 54,
     dislikes: 3,
